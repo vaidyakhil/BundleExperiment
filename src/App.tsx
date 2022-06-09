@@ -11,7 +11,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { SCREENS, SCREEN_REGISTRY } from './screens';
+import { SCREENS } from './screens';
+import { SCREEN_REGISTRY } from './screen_registry';
+import { Platform } from 'react-native';
 
 const MainStack = createNativeStackNavigator();
 
@@ -20,10 +22,12 @@ const App = () => {
 		<NavigationContainer>
 			<MainStack.Navigator
 				initialRouteName={SCREENS.SIGNUP}
-				screenOptions={{
-					// default looks weird, it kind of zooms in the screen than fades
-					animation: 'fade',
-				}}
+				screenOptions={Platform.select({
+					android: {
+						// default looks weird, it kind of zooms in the screen than fades
+						animation: 'fade',
+					},
+				})}
 			>
 				{Object.values(SCREENS).map((screenName: SCREENS) => (
 					<MainStack.Screen name={screenName} component={SCREEN_REGISTRY[screenName]} key={screenName} />
