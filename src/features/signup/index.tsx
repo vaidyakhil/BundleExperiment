@@ -3,11 +3,9 @@ import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import { SCREENS } from '../../screens/screens';
 import { ArrayUtils } from '../../utils';
 import { AppScreens } from '../types';
+import COPY from './copy';
 
 const DEFAULT_WARNING_TIME = 2000;
-
-const DEFAULT_SUBHEADING = 'Soon you will be able to signup with an awesome experience';
-const UNDER_DEVELOPMENT = 'Oh, and we are not done with the signup flow yet so please wait for sometime';
 
 const SignUpScreen: AppScreens = ({ navigation }) => {
 	const [showUnderDevelopment, setShowUnderDevelopment] = React.useState<boolean>(false);
@@ -32,9 +30,11 @@ const SignUpScreen: AppScreens = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.heading}>Hey Welcome, we are under development right now!</Text>
+			<Text style={styles.heading}>{COPY.HEADING}</Text>
 
-			<Text style={styles.subHeading}>{showUnderDevelopment ? UNDER_DEVELOPMENT : DEFAULT_SUBHEADING}</Text>
+			<Text style={styles.subHeading}>
+				{showUnderDevelopment ? COPY.UNDER_DEVELOPMENT : COPY.DEFAULT_SUBHEADING}
+			</Text>
 
 			<TouchableOpacity onPress={onSignUp} style={styles.button}>
 				<Text style={styles.buttonText}>SIGN UP</Text>

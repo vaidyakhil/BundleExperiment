@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AppScreens } from '../types';
+import COPY from './copy';
 
 const LoginScreen: AppScreens = () => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.heading}>Look How Far we have come!!</Text>
-
-			<Text style={styles.subHeading}>You have successfully signed up, soon you'll have see login page too</Text>
+			<Text style={styles.heading}>{COPY.HEADING}</Text>
+			<Text style={styles.subHeading}>{COPY.SUB_HEADING}</Text>
 		</View>
 	);
 };
